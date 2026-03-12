@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tripzo — Passagens Aéreas</title>
+  <meta name="description" content="Tripzo — cotações de passagens aéreas com transparência e suporte. Sem checkout: atendimento via WhatsApp." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="top-ribbon"></div>
+
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand" onclick="scrollToSection('home')">
+        <img src="image/logotripzo.png" alt="Tripzo" class="brand-logo" />
+      </div>
+
+      <nav aria-label="Navegação">
+        <a href="#servicos" onclick="scrollToSection('servicos'); return false;">Serviços</a>
+        <a href="#cotacao" onclick="scrollToSection('cotacao'); return false;">Cotação</a>
+        <a href="#faq" onclick="scrollToSection('faq'); return false;">Dúvidas</a>
+        <a href="#contato" onclick="scrollToSection('contato'); return false;">Contato</a>
+      </nav>
+
+      <a class="btn btn-primary" id="btnTopWA" href="#" target="_blank" rel="noreferrer">
+        WhatsApp <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+
+  <header id="home" class="hero">
+    <div class="container hero-inner">
+      <div class="grid grid-hero">
+        <div class="reveal">
+          <div class="pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <path d="M9 12l2 2 4-4"></path>
+            </svg>
+            Cotação clara • Sem checkout • Suporte humano
+          </div>
+
+          <h1 class="accent-line">Viaje com tranquilidade. <span style="color:var(--navy-2)">A Tripzo</span> te entrega a melhor opção — <span class="accent-text">explicada</span>.</h1>
+          <p class="lead">
+            Você recebe opções de voos, regras de tarifa e bagagem, conexões e orientações.
+            Nada de compra online aqui: você decide com clareza e emite no atendimento.
+          </p>
+
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="scrollToSection('cotacao')">Pedir cotação <span aria-hidden="true">→</span></button>
+            <a class="btn btn-secondary" id="btnHeroWA" href="#" target="_blank" rel="noreferrer">Tirar dúvida <span aria-hidden="true">💬</span></a>
+          </div>
+
+          <div class="hero-chip-wrap">
+            <span class="highlight-chip">Atendimento rápido • clareza de tarifa • suporte humano</span>
+          </div>
+
+          <div class="checks">
+            <div class="check"><span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg></span>Regras de tarifa explicadas</div>
+            <div class="check"><span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg></span>Bagagem sem surpresas</div>
+            <div class="check"><span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg></span>Suporte até o embarque</div>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Solicitar cotação</div>
+              <div class="card-sub">Sem pagamento aqui — atendimento via WhatsApp.</div>
+            </div>
+            <div class="iconbox" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.5v2a2.5 2.5 0 0 1-2.5 2.5H6a4 4 0 0 1-4-4V6.5A2.5 2.5 0 0 1 4.5 4H6"></path>
+                <path d="M14 4h8v8"></path>
+                <path d="M10 14 22 4"></path>
+              </svg>
+            </div>
+          </div>
+
+          <form class="form" id="cotacao" action="https://formsubmit.co/contato@tripzo.com" method="POST">
+            <div class="row2">
+              <div><label>Origem</label><input id="from" name="origem" placeholder="Ex.: Goiânia (GYN)" required /></div>
+              <div><label>Destino</label><input id="to" name="destino" placeholder="Ex.: São Paulo (GRU)" required /></div>
+            </div>
+
+            <div class="row3">
+              <div><label>Ida</label><input id="depart" name="ida" type="date" required /></div>
+              <div><label>Volta</label><input id="return" name="volta" type="date" /></div>
+              <div>
+                <label>Passageiros</label>
+                <div class="pax">
+                  <button type="button" id="paxMinus" aria-label="Diminuir passageiros">−</button>
+                  <strong><span id="paxValue">1</span></strong>
+                  <input type="hidden" id="paxHidden" name="passageiros" value="1" />
+                  <button type="button" id="paxPlus" aria-label="Aumentar passageiros">+</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="row2">
+              <div><label>Nome</label><input id="clientName" name="nome" placeholder="Seu nome" required /></div>
+              <div><label>E-mail / Telefone</label><input id="clientContact" name="contato" placeholder="Seu e-mail ou WhatsApp" required /></div>
+            </div>
+
+            <input type="hidden" name="_subject" value="Nova solicitação de cotação - Tripzo" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_next" value="thanks.html" />
+            <input type="hidden" id="messageFull" name="mensagem_completa" value="" />
+
+            <div class="form-actions form-actions-3">
+              <a class="btn btn-primary" id="btnSendWA" href="#" target="_blank" rel="noreferrer">WhatsApp <span aria-hidden="true">💬</span></a>
+              <button class="btn btn-accent" id="btnSendEmail" type="submit">Enviar por e-mail <span aria-hidden="true">✉</span></button>
+              <button class="btn btn-secondary" id="btnCopy" type="button">Copiar mensagem <span aria-hidden="true">→</span></button>
+            </div>
+
+            <div class="tiny">Atendimento humano. Você pode enviar os dados por WhatsApp ou por e-mail automático via formulário.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="servicos" class="section">
+    <div class="container">
+      <div class="center reveal">
+        <h2>O básico bem feito (e bonito)</h2>
+        <p>Um site simples, direto e confiável — com o que realmente importa pra fechar a cotação.</p>
+      </div>
+
+      <div class="cards">
+        <div class="mini reveal">
+          <div class="mini-top">
+            <div class="mini-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13"></path><path d="M22 2 15 22 11 13 2 9 22 2z"></path></svg></div>
+            <div><h3>Cotações nacionais e internacionais</h3><p>Opções por preço e por tempo de viagem, com conexões seguras.</p></div>
+          </div>
+        </div>
+
+        <div class="mini reveal">
+          <div class="mini-top">
+            <div class="mini-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg></div>
+            <div><h3>Transparência de tarifa</h3><p>Você entende reembolso, remarcação, bagagem e taxas antes de emitir.</p></div>
+          </div>
+        </div>
+
+        <div class="mini reveal">
+          <div class="mini-top">
+            <div class="mini-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v6l4 2"></path><circle cx="12" cy="12" r="10"></circle></svg></div>
+            <div><h3>Resposta rápida</h3><p>Atendimento ágil pelo WhatsApp, com orientação de check-in e viagem.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal" style="margin-top:18px;">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Quer personalizar com seus dados?</div>
+            <div class="card-sub">Troco textos, contatos e deixo tudo com seu número certinho.</div>
+          </div>
+          <a class="btn btn-accent" id="btnServiceWA" href="#" target="_blank" rel="noreferrer">Chamar no WhatsApp →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="center reveal">
+        <h2>Dúvidas rápidas</h2>
+        <p>Se quiser, chama no WhatsApp e resolvemos em minutos.</p>
+      </div>
+
+      <div class="faq">
+        <details class="reveal">
+          <summary><span class="q">A cotação é gratuita?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="a">Sim. Você recebe opções e só emite se fizer sentido para você.</div>
+        </details>
+        <details class="reveal">
+          <summary><span class="q">Tem pagamento pelo site?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="a">Não. Esta página é informativa e de captação. A emissão é feita no atendimento.</div>
+        </details>
+        <details class="reveal">
+          <summary><span class="q">Vocês ajudam com bagagem e regras da tarifa?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="a">Sim. A gente explica o que está incluso (bagagem, remarcação, reembolso) antes de emitir.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="center reveal">
+        <h2>Contato</h2>
+        <p>Fale com a Tripzo e peça sua cotação.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="mini contact-item reveal">
+          <div class="k">WhatsApp</div>
+          <a class="btn btn-primary" id="btnContactWA" href="#" target="_blank" rel="noreferrer" style="margin-top:10px;">Abrir WhatsApp 💬</a>
+          <div class="card-sub" style="margin-top:10px;">Troque o número no JS do arquivo.</div>
+        </div>
+
+        <div class="mini contact-item reveal">
+          <div class="k">Telefone / E-mail</div>
+          <div class="v">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 5.18 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.72c.12.81.3 1.6.54 2.36a2 2 0 0 1-.45 2.11L9.9 10.1a16 16 0 0 0 4 4l.91-.19a2 2 0 0 1 2.11.45c.76.24 1.55.42 2.36.54A2 2 0 0 1 22 16.92z"/></svg>
+            (00) 0000-0000
+          </div>
+          <div class="v" style="margin-top:8px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+            contato@tripzo.com
+          </div>
+        </div>
+
+        <div class="mini contact-item reveal">
+          <div class="k">Local</div>
+          <div class="v">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><path d="M12 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            Sua cidade — Brasil
+          </div>
+          <div class="card-sub" style="margin-top:10px;">* Ajuste os dados no HTML.</div>
+        </div>
+      </div>
+
+      <div class="note">Aviso: site informativo e de captação. Não há pagamento/checkout aqui.</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="foot-brand">
+        <img src="image/logotripzo.png" alt="Tripzo" class="footer-logo" />
+        <span>© <span id="year"></span> Tripzo.</span>
+      </div>
+      <div style="color:#64748b; font-weight:700;">Feito simples, bonito e confiável.</div>
+    </div>
+  </footer>
+
+  <a class="fab float" id="fabWA" href="#" target="_blank" rel="noreferrer" aria-label="Falar no WhatsApp">
+    <span class="wa-ic" aria-hidden="true">
+      <svg viewBox="0 0 32 32" fill="currentColor" style="width:22px;height:22px;">
+        <path d="M19.11 17.18c-.28-.14-1.66-.82-1.92-.92-.26-.1-.45-.14-.64.14-.19.28-.74.92-.91 1.11-.17.19-.34.21-.62.07-.28-.14-1.2-.44-2.29-1.41-.85-.76-1.42-1.7-1.58-1.98-.17-.28-.02-.43.12-.57.13-.13.28-.34.42-.51.14-.17.19-.28.28-.47.1-.19.05-.36-.02-.51-.07-.14-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49h-.55c-.19 0-.51.07-.78.36-.26.28-1.03 1.01-1.03 2.46s1.06 2.85 1.21 3.05c.14.19 2.09 3.19 5.06 4.47.71.31 1.26.49 1.69.62.71.23 1.35.2 1.86.12.57-.08 1.66-.68 1.89-1.34.23-.66.23-1.22.16-1.34-.07-.12-.26-.19-.54-.33z"/>
+        <path d="M16.06 3C8.87 3 3 8.77 3 15.87c0 2.26.61 4.46 1.77 6.38L3 29l6.95-1.78c1.86 1.02 3.96 1.56 6.11 1.56 7.19 0 13.06-5.77 13.06-12.87C29.12 8.77 23.25 3 16.06 3zm0 23.5c-2.01 0-3.97-.54-5.66-1.56l-.41-.24-4.12 1.06 1.1-3.98-.27-.4a10.45 10.45 0 0 1-1.71-5.51c0-5.79 4.85-10.5 10.88-10.5 6.03 0 10.88 4.71 10.88 10.5 0 5.79-4.85 10.5-10.88 10.5z"/>
+      </svg>
+    </span>
+    <span class="txt"><b>WhatsApp</b><span>Cotação rápida</span></span>
+    <span class="arrow" aria-hidden="true">→</span>
+  </a>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
